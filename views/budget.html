@@ -1,0 +1,71 @@
+<include href="views/header.html"></include>
+    <body>
+        <div class="container">
+            <h1>Budget Information</h1>
+            <form action="budgetSummary" method="post">
+                <div class="form-group">
+                    <label for="funds">Starting Fund:<br></label>
+                    <input type="number" class="form-control pl-2" id="funds" name="funds">
+                </div>
+
+                <br>
+
+                <div class="form-group">
+                    <label for="priority">Priority: <br></label>
+                    <input type="text" class="form-control pl-2" id="priority" name="priority" >
+                </div>
+
+                <br>
+
+                <div class="form-group">
+                    <label for="amount">Base Amount: <br></label>
+                    <input type="number" class="form-control pl-2" id="" name="amount" >
+                </div>
+
+                <br>
+
+                <label>Side Budget</label>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="sideBudget" id="yes" value="option1" checked>
+                    <label class="form-check-label" for="yes">
+                        No
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="sideBudget" id="no" value="option2">
+                    <label class="form-check-label" for="no">
+                        Yes
+                    </label>
+                </div>
+
+                <br>
+
+                <div class="form-group">
+                    <label for="amount">Side Amount: <br></label>
+                    <input type="number" class="form-control pl-2" id="amount" name="amount">
+                </div>
+
+
+                <div class="form-group">
+                    <label for="description">Description: <br></label>
+                    <input type="text" class="form-control pl-2" id="description" name="date" value="">
+                </div>
+
+                <div class="form-group">
+                    <label for="startDate">Start date: <br></label>
+                    <input type="text" class="form-control pl-2" id="startDate" name="startDate" placeholder="mm/dd/yyyy" value="">
+                </div>
+
+                <div class="form-group">
+                    <label for="endDate">End date: <br></label>
+                    <input type="text" class="form-control pl-2" id="endDate" name="endDate" placeholder="mm/dd/yyyy" value="">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+
+                <br><br><br><br>
+            </form>
+        </div>
+    </body>
+</html>

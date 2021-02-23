@@ -1,0 +1,9 @@
+<include href="views/header.html"></include>
+<body>
+    <div class="container">
+        <h3>Starting funds: {{ @SESSION.budgetSummary["funds"] }}</h3>
+        <h3>Priority: {{ @SESSION.budgetSummary["priority"] }}</h3>
+        <h3>Allotted Amount: ${{ @SESSION.budgetSummary["amount"] }}</h3>
+    </div>
+</body>
+</html>
