@@ -1,4 +1,7 @@
 <?php
+//Require files
+require_once('vendor/autoload.php');
+
 
 //Turn on error reporting
 ini_set('display_errors', 1);
@@ -7,47 +10,44 @@ error_reporting(E_ALL);
 //Start a session
 session_start();
 
-//Require files
-require_once('vendor/autoload.php');
-
+//Instances
 $f3 = Base::instance();
+$validator = new Validate();
+$dataLayer = new DataLayer();
+$budget = new Budget();
+$controller = new Controller($f3);
+
 //Turn on Fat-Free error reporting
 $f3->set('DEBUG', 3);
 
 //Define a default route
-$f3->route('GET|POST /', function() {
-    //Display a view
-    $view = new Template();
-    echo $view->render('views/home.html');
+$f3->route('GET /', function() {
+    global $controller;
+    $controller->home();
 });
 
 //Define a login route
 $f3->route('GET /login', function() {
-    //Display a view
-    $view = new Template();
-    echo $view->render('views/login.html');
+    global $controller;
+    $controller->login();
 });
 
-//Define a login route
-$f3->route('GET /register', function() {
-    //Display a view
-    $view = new Template();
-    echo $view->render('views/register.html');
-});
-
-//Define a budget route
-$f3->route('GET /budget', function() {
-    //Display a view
-    $view = new Template();
-    echo $view->render('views/budget.html');
+//Define a register route
+$f3->route('GET|POST /register', function() {
+    global $controller;
+    $controller->register();
 });
 
 //Define a budget route
+$f3->route('GET|POST /budget', function($f3) {
+    global $controller;
+    $controller->budget();
+});
+
+//Define a budget summary route
 $f3->route('GET|POST /budgetSummary', function() {
-    //Display a view
-    $_SESSION["budgetSummary"] = $_POST;
-    $view = new Template();
-    echo $view->render('views/budget-summary.html');
+    global $controller;
+    $controller->budgetSummary();
 });
 
 //Run Fat-Free
