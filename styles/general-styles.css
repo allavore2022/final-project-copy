@@ -1,0 +1,19 @@
+/* header stylings */
+header {
+    height: 50vh;
+}
+#header {
+    background-image: url("../images/backgroundImage.png");
+    width: 100%;
+}
+
+#userWelcomeMessage {
+    font-size: 5em;
+}
+
+/*.titleBox {*/
+/*    margin: auto;*/
+/*    position: absolute;*/
+/*    !*top: 50%;*!*/
+/*    !*left: 50%;*!*/
+/*}*/

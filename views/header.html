@@ -1,21 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles/general-styles.css">
-    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Expense Tracker</title>
-    <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="{{ @BASE }}">Expense Tracker</a>
-        <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="login">Login <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link active" href="register">Register <span class="sr-only">(current)</span></a>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="{{ @BASE }}">
+                <img src="images/credit-card-8x.png" width="30" height="30" alt="Credit card">
+                Expense Tracker</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="true" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup" style="">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="login">Login</a>
+                    <a class="nav-item nav-link" href="register">Register</a>
+                </div>
+            </div>
         </div>
     </nav>
-</head>
 
-<footer class="footer mt-auto py-3 bg-light text-center fixed-bottom">
-    <div class="container">
-        <span class="text-muted">Created by 404Found</span>
-    </div>
-</footer>
+    <!-- HEADER -->
+    <header class="bg-primary-color text-black text-center" id="header">
+        <div class="py-5 align-self-center">
+            <h1 class="align-self-center" id="userWelcomeMessage">Welcome back, {{ @SESSION.fname }}!</h1>
+            <h2 class="align-self-center" id="userBalanceMessage">Your current balance is {{ @SESSION.amount }} .</h2>
+        </div>
+        <!--        <img src="images/starfieldLibrary.jpg" class="img-fluid w-100" alt="Image of library in Korea">-->
+    </header>
+
+</head>

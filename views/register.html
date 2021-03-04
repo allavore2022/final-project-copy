@@ -2,21 +2,142 @@
     <div class="container pt-4">
         <h1>Register</h1><br>
 
-
         <h3>Create an Account</h3>
         <form action="#" method="post">
+            <!-- Username -->
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" class="form-control pl-2" id="username" name="username">
             </div>
+
+            <!-- Password -->
             <div class="form-group">
                 <label for="password">Password</label>
                 <input type="password" class="form-control pl-2" id="password" name="password" >
+            </div>
+
+            <!-- Notifications -->
+            <div class="form-group">
+                <label for="notification">Notification</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="method" id="notification" value="notification" >
+                    <label class="form-check-label" for="notification">
+                        Yes
+                    </label>
+
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="method" id="noNotification" value="noNotification">
+                    <label class="form-check-label" for="noNotification">
+                        No
+                    </label>
+                </div>
+            </div>
+
+            <!-- Situation -->
+            <div class="form-group">
+                <legend>Situation</legend>
+
+                <select class="form-control" id="situation" name="situation">
+                    <option value="none">Choose</option>
+                    <option value="education">Education</option>
+                    <option value="bills">Bills</option>
+                    <option value="leisure">Leisure</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <h3>Personal Information</h3>
+
+            <div class="form-group row">
+                <div class="col">
+                    <label for="username">First name</label>
+                    <input type="text" class="form-control pl-2" id="fname" name="fname">
+                </div>
+                <div class="col">
+                    <label for="username">Last name</label>
+                    <input type="text" class="form-control pl-2" id="lname" name="lname">
+                </div>
+            </div>
+
+            <!-- Gender -->
+            <div class="form-group">
+                <p>Gender</p>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="method" id="female" value="female" >
+                    <label class="form-check-label" for="female">
+                        Female
+                    </label>
+
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="method" id="male" value="male">
+                    <label class="form-check-label" for="male">
+                        Male
+                    </label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="method" id="other" value="other">
+                    <label class="form-check-label" for="other">
+                        Other
+                    </label>
+                </div>
+            </div>
+
+            <!-- Age -->
+            <div class="form-group">
+<!--                <div class="col">-->
+                    <label for="age">Age</label>
+                    <input type="text" class="form-control pl-2 col-3" id="age" name="age">
+<!--                </div>-->
+            </div>
+
+            <!-- Starting Funds -->
+            <div class="form-group">
+                <label for="startingFunds">Starting Funds</label>
+                <input type="text" class="form-control pl-2 col-3" id="startingFunds" name="startingFunds">
             </div>
 
             <button type="submit" class="btn btn-primary">Register</button>
         </form>
 
     </div>
+    <br><br>
+
+    <footer class="bg-light text-center text-lg-start">
+        <!-- Grid container -->
+        <div class="container p-4">
+            <!--Grid row-->
+            <div class="row">
+                <!--Grid column-->
+                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Who are we?</h5>
+
+                    <p>
+                        Is it time to finally start tracking your spending? With this expense tracker not only will you be able to
+                        create a budget for every situation you find yourself in, you'll also be able to create financial goals as
+                        well!
+                    </p>
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Join Today!</h5>
+                    <a class="btn btn-outline-dark btn-lg" href="register" role="button">Register</a>
+                </div>
+                <!--Grid column-->
+            </div>
+            <!--Grid row-->
+        </div>
+        <!-- Grid container -->
+
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            <span class="text-muted">Created by 404Found</span>
+        </div>
+        <!-- Copyright -->
+    </footer>
+
 </body>
 </html>

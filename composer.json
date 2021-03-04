@@ -1,9 +1,9 @@
 {
-  "name": "~SDEV 328 - 328/final-project-copy",
+  "name": "~SDEV 328 - Tina/328/food3",
   "authors": [
     {
-    "name":"Joseph Igama",
-    "email": "jigama2@mail.greenriver.edu"
+      "name":"Joseph Igama",
+      "email": "jigama2@mail.greenriver.edu"
     },
     {
       "name":"Alisa Llavore",
@@ -12,5 +12,8 @@
   ],
   "require": {
     "bcosca/fatfree-core": "dev-master"
+  },
+  "autoload": {
+    "classmap": ["model/", "classes/", "controllers/"]
   }
 }
