@@ -1,0 +1,73 @@
+//////// NEW DATABASE CODE
+
+CREATE TABLE account (
+    userNum INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    userName VARCHAR(30),
+    email VARCHAR(50),
+    password VARCHAR(20),
+    notification BIT,
+    situation VARCHAR(20),
+    startingFunds DECIMAL(10, 2),
+    fname VARCHAR(30),
+    lname VARCHAR(30),
+    gender VARCHAR(10),
+    age INT(5)
+);
+
+CREATE TABLE budget (
+    budgetNum INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    baseFunds DECIMAL(10, 2),
+    description VARCHAR(50),
+    startDate DATE,
+    endDate DATE,
+    priority VARCHAR(20),
+    userNum INT NOT NULL,
+    FOREIGN KEY (userNum) REFERENCES account(userNum)
+);
+
+CREATE TABLE expenses (
+    price DECIMAL(10, 2),
+    description VARCHAR(30)
+);
+
+CREATE TABLE goal (
+    startDate DATE,
+    endDate DATE,
+    preferredEndDate DATE
+);
+
+//////// VERSION 1.0 DATABASE CODE
+CREATE TABLE account (
+    userNum INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    userName VARCHAR(30),
+    email VARCHAR(50),
+    password VARCHAR(20),
+    notification BIT,
+    situation VARCHAR(20),
+    startingFunds DECIMAL(10, 2),
+    fname VARCHAR(30),
+    lname VARCHAR(30),
+    gender VARCHAR(10),
+    age INT(5)
+);
+
+CREATE TABLE budget (
+    budgetNum INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    baseFunds DECIMAL(10, 2),
+    description VARCHAR(50),
+    startDate DATE,
+    endDate DATE,
+    priority VARCHAR(20),
+    FOREIGN KEY (userNum) REFERENCES account(userNum)
+);
+
+CREATE TABLE expenses (
+    price DECIMAL(10, 2),
+    description VARCHAR(30)
+);
+
+CREATE TABLE goal (
+    startDate DATE,
+    endDate DATE,
+    preferredEndDate DATE
+);

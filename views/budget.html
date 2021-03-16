@@ -7,7 +7,7 @@
 
                 <div class="form-group">
                     <label for="baseFunds">Base Fund: <br></label>
-                    <input type="number" class="form-control pl-2" id="baseFunds" name="baseFunds" value="{{ @baseFunds }}">
+                    <input type="number" class="form-control pl-2" id="baseFunds" name="baseFunds" value="{{ @baseFunds }}" placeholder="Enter your base fund">
 
                     <!--Inline error if base fund isn't entered-->
                     <div class="text-danger">
@@ -21,13 +21,13 @@
 
                 <div class="form-group">
                     <label for="description">Description:<br></label>
-                    <input type="text" class="form-control pl-2" id="description" name="description" value="{{ @description }}">
+                    <input type="text" class="form-control pl-2" id="description" name="description" value="{{ @description }}" placeholder="Enter a description (optional)">
                 </div>
                 <br>
 
                 <div class="form-group">
                     <label for="startDate">Starting Date:<br></label>
-                    <input type="number" class="form-control pl-2" id="startDate" name="startDate" placeholder="mmddyyyy" value="{{ @startDate }}">
+                    <input type="number" class="form-control pl-2" id="startDate" name="startDate" placeholder="yyyymmdd" value="{{ @startDate }}">
 
                     <!--Inline error if start date isn't entered-->
                     <div class="text-danger">
@@ -42,7 +42,7 @@
 
                 <div class="form-group">
                     <label for="endDate">End Date:<br></label>
-                    <input type="number" class="form-control pl-2" id="endDate" name="endDate" placeholder="mmddyyyy" value="{{ @endDate }}">
+                    <input type="number" class="form-control pl-2" id="endDate" name="endDate" placeholder="yyyymmdd" value="{{ @endDate }}">
 
                     <!--Inline error if end date isn't entered-->
                     <div class="text-danger">

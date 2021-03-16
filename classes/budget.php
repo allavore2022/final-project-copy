@@ -9,6 +9,22 @@ class Budget
     private $_endDate;
     private $_priority;
 
+    /**
+     * Budget constructor.
+     * @param $_baseFunds
+     * @param $_description
+     * @param $_startDate
+     * @param $_endDate
+     * @param $_priority
+     */
+    public function __construct($_baseFunds="", $_description="", $_startDate="", $_endDate="", $_priority="")
+    {
+        $this->_baseFunds = $_baseFunds;
+        $this->_description = $_description;
+        $this->_startDate = $_startDate;
+        $this->_endDate = $_endDate;
+        $this->_priority = $_priority;
+    }
 
     /**
      * @return mixed

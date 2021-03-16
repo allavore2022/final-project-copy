@@ -10,11 +10,12 @@ error_reporting(E_ALL);
 //Start a session
 session_start();
 
+require $_SERVER['DOCUMENT_ROOT'].'/../config.php';
+
 //Instances
 $f3 = Base::instance();
 $validator = new Validate();
-$dataLayer = new DataLayer();
-$budget = new Budget();
+$dataLayer = new DataLayer($dbh);
 $controller = new Controller($f3);
 
 //Turn on Fat-Free error reporting

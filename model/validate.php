@@ -10,7 +10,7 @@ class Validate
      */
     public function __construct()
     {
-        $this->_dataLayer = new DataLayer();
+        $this->_dataLayer = new DataLayer($dbh);
     }
 
     /**
@@ -68,16 +68,32 @@ class Validate
     }
 
     //-------Registration Page Validation
-
     function validUsername($username)
     {
         return !empty($username) && strlen($username) > 3;
+    }
+
+    /**
+     * validAEmail checks to see that an email address is valid
+     * REQUIRED
+     * #param String $email
+     * @return boolean
+     */
+    function validEmail($email)
+    {
+        return !empty($email) && preg_match("/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/", $email);
     }
 
     function validPassword($password)
     {
         return !empty($password) && strlen($password) > 5;
     }
+
+    function passwordConfirmation($password, $confirm)
+    {
+        return $password === $confirm;
+    }
+
     /**
      * validName checks to see that  string is all
      * alphabetic
@@ -95,16 +111,7 @@ class Validate
         return !empty($lname) && ctype_alpha($lname);
     }
 
-    /**
-     * validAEmail checks to see that an email address is valid
-     * REQUIRED
-     * #param String $email
-     * @return boolean
-     */
-    function validEmail($email)
-    {
-        return !empty($email) && preg_match("/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/", $email);
-    }
+
 
     function validStartingfunds($startingFunds)
     {
@@ -116,16 +123,10 @@ class Validate
         //get valid situations from data layer
         $validSituation = $this->_dataLayer->getSituation();
 
-//        //Check every selected condiment
-//        foreach ($selectedSituation as $selected) {
-//
-//            if()
-
-            //If the selected condiment is not in the valid list, return false
-            if (!in_array($selectedSituation, $validSituation)) {
-                return false;
-            }
-//        }
+        //If the selected condiment is not in the valid list, return false
+        if (!in_array($selectedSituation, $validSituation)) {
+            return false;
+        }
 
         //If we haven't false by now, we're good!
         return true;
