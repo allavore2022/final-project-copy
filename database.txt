@@ -25,9 +25,10 @@ CREATE TABLE budget (
     FOREIGN KEY (userNum) REFERENCES account(userNum)
 );
 
-CREATE TABLE expenses (
+CREATE TABLE expense (
     price DECIMAL(10, 2),
-    description VARCHAR(30)
+    description VARCHAR(150),
+    priority VARCHAR(20)
 );
 
 CREATE TABLE goal (
