@@ -22,7 +22,7 @@ $controller = new Controller($f3);
 $f3->set('DEBUG', 3);
 
 //Define a default route
-$f3->route('GET /', function() {
+$f3->route('GET|POST /', function() {
     global $controller;
     $controller->home();
 });

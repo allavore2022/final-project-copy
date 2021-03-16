@@ -131,4 +131,10 @@ class Validate
         //If we haven't false by now, we're good!
         return true;
     }
+
+    //------- Expense Modal Validation
+    function validPrice($price)
+    {
+        return !empty($price) && $price > 0;
+    }
 }

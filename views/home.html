@@ -1,147 +1,143 @@
 <include href="views/header.html"></include>
 
-<!-- Modal for input expense -->
-<div class="container">
-    <!-- The Modal -->
-    <div class="modal fade" id="myModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <form action="#" method="post">
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                        <h4 class="modal-title">Expense</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-
-                    <!-- Modal body -->
-                    <div class="modal-body">
-                        <!-- Username -->
-                        <div class="form-group">
-                            <label for="price">Price</label>
-                            <input type="number" class="form-control pl-2" id="price" name="price" placeholder="$">
+<body>
+    <!-- Modal for input expense -->
+    <div class="container">
+        <!-- The Modal -->
+        <div class="modal fade" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form action="#" method="post">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Expense</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
 
-                        <!-- Password -->
-                        <div class="form-group">
-                            <label for="description">Description</label>
-                            <input type="text" class="form-control pl-2" id="description" name="description" >
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <!-- Price -->
+                            <div class="form-group">
+                                <label for="price">Price</label>
+                                <input type="number" step="any" class="form-control pl-2" id="price" name="price" placeholder="$">
+
+                                <!--Inline error if price isn't entered-->
+                                <div class="text-danger">
+                                    <check if="{{ isset(@errors['price']) }}">
+                                        {{ @errors['price'] }}
+                                    </check>
+                                </div>
+                            </div>
+
+                            <!-- Password -->
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <input type="text" class="form-control pl-2" id="description" name="description" >
+                            </div>
+
+                            <!-- Priority -->
+                            <label>Priority</label>
+                            <div class="form-group">
+                                <!--Displays priority choices retrieved from data-layer-->
+                                <repeat group="{{ @priorities }}" value="{{ @priority }}">
+                                    <check if="{{ @priority == $priorityChoice }}">
+                                        <true>
+                                            <label> <input type="radio" name="priority" value="{{ @priority }}" checked>
+                                                {{ ucfirst(@priority) }}
+                                            </label>
+                                        </true>
+                                        <false>
+                                            <label> <input type="radio" name="priority" value="{{ @priority }}">
+                                                {{ ucfirst(@priority) }}
+                                            </label>
+                                        </false>
+                                    </check>
+                                    <br>
+                                </repeat>
+
+                                <!--Inline error if no priority level is chosen-->
+                                <div class="text-danger">
+                                    <check if="{{ isset(@errors['priorityEmpty']) }}">
+                                        {{ @errors['priorityEmpty'] }}
+                                    </check>
+                                </div>
+
+                                <!--Inline error if spoofing is attempted-->
+                                <div class="text-danger">
+                                    <check if="{{ isset(@errors['prioritySpoof']) }}">
+                                        {{ @errors['prioritySpoof'] }}
+                                    </check>
+                                </div>
+                            </div>
                         </div>
 
-                        <!-- Priority -->
-                        <label>Priority</label>
-                        <div class="form-group">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="priority" id="gridRadios1" value="high">
-                                <label class="form-check-label" for="gridRadios1">
-                                    High
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="priority" id="gridRadios2" value="medium">
-                                <label class="form-check-label" for="gridRadios2">
-                                    Medium
-                                </label>
-                            </div>
-                            <div class="form-check disabled">
-                                <input class="form-check-input" type="radio" name="priority" id="gridRadios3" value="low">
-                                <label class="form-check-label" for="gridRadios3">
-                                    Low
-                                </label>
-                            </div>
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-outline-dark" >Submit</button>
                         </div>
-                    </div>
-
-                    <!-- Modal footer -->
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-outline-dark" >Submit</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-</div>
-
-<div class="container pt-3 pb-3">
-
-    <h1 class="text-center">Current Expenses: </h1>
-
-    <!--    <p>This web app will help users track their spending and create “spending goals”.-->
-    <!--        On the main page the user can either choose to manage their account or add a-->
-    <!--        new one. Upon creating a new account they will be asked for their starting funds.-->
-    <!--        As the user spends or adds money they will be presented with another page to enter the price,-->
-    <!--        description and priority of the purchase. The amount of their account will appear on the main page.-->
-    <!--        When a user creates a goal, they will also be asked when they want their goal to be achieved.-->
-    <!--        After the information is entered our app will then generate a suggested spending amount for each day,-->
-    <!--        and if the user follows the suggested plan they should be able to attain their goal within the time-->
-    <!--        they specified. The user can also request a summary of how much they spent at either weekly, monthly,-->
-    <!--        or yearly increments.</p>-->
-
-    <div class="row row-cols-1 row-cols-md-3 mb-3 justify-content-center text-center pt-3">
-        <div class="col-4">
-            <div class="row-4 card mb-4 shadow-sm">
-                <div class="card-body">
-                    <h1 class="card-title pricing-card-title">Budget 1</h1>
-                    <p>Current balance: {{ @SESSION.amount }}</p>
-                    <button type="button" class="w-100 btn btn-lg btn-outline-dark" data-toggle="modal" data-target="#myModal">Edit</button>
+                    </form>
                 </div>
             </div>
         </div>
-        <div class="col-4">
-            <div class="row-4 card mb-4 shadow-sm">
-                <div class="card-body">
-                    <h1 class="card-title pricing-card-title">Budget 2</h1>
-                    <p>Current balance: {{ @SESSION.amount }}</p>
-                    <button type="button" class="w-100 btn btn-lg btn-outline-dark" data-toggle="modal" data-target="#myModal">Edit</button>
+
+    </div>
+
+    <div class="container pt-3 pb-3">
+
+        <h1 class="text-center">Current Expenses: </h1>
+
+        <!--    <p>This web app will help users track their spending and create “spending goals”.-->
+        <!--        On the main page the user can either choose to manage their account or add a-->
+        <!--        new one. Upon creating a new account they will be asked for their starting funds.-->
+        <!--        As the user spends or adds money they will be presented with another page to enter the price,-->
+        <!--        description and priority of the purchase. The amount of their account will appear on the main page.-->
+        <!--        When a user creates a goal, they will also be asked when they want their goal to be achieved.-->
+        <!--        After the information is entered our app will then generate a suggested spending amount for each day,-->
+        <!--        and if the user follows the suggested plan they should be able to attain their goal within the time-->
+        <!--        they specified. The user can also request a summary of how much they spent at either weekly, monthly,-->
+        <!--        or yearly increments.</p>-->
+
+        <div class="row row-cols-1 row-cols-md-3 mb-3 justify-content-center text-center pt-3">
+            <div class="col-4">
+                <div class="row-4 card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">Budget 1</h1>
+                        <p>Current balance: {{ @SESSION.amount }}</p>
+                        <button type="button" class="w-100 btn btn-lg btn-outline-dark" data-toggle="modal" data-target="#myModal">Edit</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="row-4 card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">Budget 2</h1>
+                        <p>Current balance: {{ @SESSION.amount }}</p>
+                        <div class="row">
+                            <div class="col">
+                                <!-- Add expense -->
+                                <button type="button" class="w-100 btn btn-lg btn-outline-dark" data-toggle="modal" data-target="#myModal">Expense</button>
+                            </div>
+                            <div class="col">
+                                <!-- Edit budget -->
+                                <button type="button" class="w-100 btn btn-lg btn-outline-dark">Edit Budget</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2 align-self-center">
+                <div class="row-2 card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title"><a href="budget">+</a></h1>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-2 align-self-center">
-            <div class="row-2 card mb-4 shadow-sm">
-                <div class="card-body">
-                    <h1 class="card-title pricing-card-title"><a href="budget">+</a></h1>
-                </div>
-            </div>
-        </div>
+
     </div>
+    <br><br><br>
 
-</div>
-<br><br><br>
-
-<footer class="bg-light text-center text-lg-start">
-    <!-- Grid container -->
-    <div class="container p-4">
-        <!--Grid row-->
-        <div class="row">
-            <!--Grid column-->
-            <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-                <h5 class="text-uppercase">Who are we?</h5>
-
-                <p>
-                    Is it time to finally start tracking your spending? With this expense tracker not only will you be able to
-                    create a budget for every situation you find yourself in, you'll also be able to create financial goals as
-                    well!
-                </p>
-            </div>
-            <!--Grid column-->
-
-            <!--Grid column-->
-            <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-                <h5 class="text-uppercase">Join Today!</h5>
-                <a class="btn btn-outline-dark btn-lg" href="register" role="button">Register</a>
-            </div>
-            <!--Grid column-->
-        </div>
-        <!--Grid row-->
-    </div>
-    <!-- Grid container -->
-
-    <!-- Copyright -->
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-        <span class="text-muted">Created by 404Found</span>
-    </div>
-    <!-- Copyright -->
-</footer>
+<include href="views/footer.html"></include>
 
 </body>
 </html>

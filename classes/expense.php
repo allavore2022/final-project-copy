@@ -1,6 +1,6 @@
 <?php
 
-class Expenses {
+class Expense {
 
     private $_price;
     private $_description;
